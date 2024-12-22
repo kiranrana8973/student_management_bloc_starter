@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:student_management_bloc_starter/core/common/snackbar/my_snackbar.dart';
 import 'package:student_management_bloc_starter/features/auth/presentation/view/register_view.dart';
+import 'package:student_management_bloc_starter/features/home/presentation/view/home_view.dart';
 
 class LoginView extends StatelessWidget {
   LoginView({super.key});
@@ -61,7 +63,23 @@ class LoginView extends StatelessWidget {
                     _gap,
                     ElevatedButton(
                       onPressed: () async {
-                        if (_formKey.currentState!.validate()) {}
+                        if (_formKey.currentState!.validate()) {
+                          if (_usernameController.text == 'kiran' &&
+                              _passwordController.text == 'kiran123') {
+                            Navigator.pushReplacement(
+                              context,
+                              MaterialPageRoute(builder: (_) {
+                                return HomeView();
+                              }),
+                            );
+                          } else {
+                            showMySnackBar(
+                              context: context,
+                              message: 'Invalid username or password',
+                              color: Colors.red,
+                            );
+                          }
+                        }
                       },
                       child: const SizedBox(
                         height: 50,

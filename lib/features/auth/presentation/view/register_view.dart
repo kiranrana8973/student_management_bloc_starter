@@ -8,8 +8,8 @@ class RegisterView extends StatelessWidget {
   final _key = GlobalKey<FormState>();
 
   final _fnameController = TextEditingController(text: 'kiran');
-  final _lnameController = TextEditingController(text: 'kiran123');
-  final _phoneController = TextEditingController(text: '989898989898');
+  final _lnameController = TextEditingController(text: 'rana');
+  final _phoneController = TextEditingController(text: '123456789');
   final _usernameController = TextEditingController(text: 'kiran');
   final _passwordController = TextEditingController(text: 'kiran123');
 
