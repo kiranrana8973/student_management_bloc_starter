@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:student_management_bloc_starter/features/auth/presentation/view/login_view.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:student_management_bloc_starter/features/splash/presentation/bloc/splash_cubit.dart';
 
 class SplashView extends StatefulWidget {
   const SplashView({super.key});
@@ -10,17 +11,24 @@ class SplashView extends StatefulWidget {
 
 class _SplashViewState extends State<SplashView> {
   @override
-  void initState() {
-    Future.delayed(const Duration(seconds: 2), () {
-      Navigator.pushReplacement(
-        context,
-        MaterialPageRoute(
-          builder: (_) => LoginView(),
-        ),
-      );
-    });
+  void initState() async {
     super.initState();
+
+    Future.delayed(const Duration(seconds: 2));
+
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      context.read<SplashCubit>().navigateToLogin();
+    });
   }
+
+  // @override
+  // void didChangeDependencies() {
+  //   WidgetsBinding.instance.addPostFrameCallback((_) {
+  //     Future.delayed(const Duration(seconds: 2));
+  //     context.read<SplashCubit>().navigateToLogin();
+  //   });
+  //   super.didChangeDependencies();
+  // }
 
   @override
   Widget build(BuildContext context) {

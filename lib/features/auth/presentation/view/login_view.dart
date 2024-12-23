@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:student_management_bloc_starter/core/common/snackbar/my_snackbar.dart';
+import 'package:student_management_bloc_starter/features/auth/presentation/bloc/login_cubit.dart';
 import 'package:student_management_bloc_starter/features/auth/presentation/view/register_view.dart';
-import 'package:student_management_bloc_starter/features/home/presentation/view/home_view.dart';
 
 class LoginView extends StatelessWidget {
   LoginView({super.key});
@@ -66,12 +67,7 @@ class LoginView extends StatelessWidget {
                         if (_formKey.currentState!.validate()) {
                           if (_usernameController.text == 'kiran' &&
                               _passwordController.text == 'kiran123') {
-                            Navigator.pushReplacement(
-                              context,
-                              MaterialPageRoute(builder: (_) {
-                                return HomeView();
-                              }),
-                            );
+                            context.read<LoginCubit>().navigateToHome();
                           } else {
                             showMySnackBar(
                               context: context,

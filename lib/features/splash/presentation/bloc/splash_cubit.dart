@@ -10,5 +10,10 @@ class SplashCubit extends Cubit<void> {
 
   void navigateToLogin() {
     _splashViewNavigator.openLoginView();
+
+    // wait for 2 seconds
+    // Future.delayed(Duration(seconds: 2), () {
+    //   _splashViewNavigator.openLoginView();
+    // });
   }
 }
