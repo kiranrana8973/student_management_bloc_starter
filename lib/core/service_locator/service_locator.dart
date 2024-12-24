@@ -8,24 +8,32 @@ import 'package:student_management_bloc_starter/features/splash/presentation/nav
 final serviceLocator = GetIt.instance;
 
 void setupServiceLocator() {
-  _initSplashCubit();
-
-  _initAuthCubit();
+  _initSplash();
+  _initAuth();
 }
 
-void _initSplashCubit() {
-  serviceLocator
-      .registerLazySingleton<SplashViewNavigator>(() => SplashViewNavigator());
+void _initSplash() {
+  serviceLocator.registerLazySingleton<SplashViewNavigator>(
+    () => SplashViewNavigator(),
+  );
   serviceLocator.registerLazySingleton<SplashCubit>(
-      () => SplashCubit(splashViewNavigator: serviceLocator()));
+    () => SplashCubit(
+      splashViewNavigator: serviceLocator<SplashViewNavigator>(),
+    ),
+  );
 }
 
-void _initAuthCubit() {
+void _initAuth() {
   serviceLocator.registerLazySingleton<RegisterViewNavigator>(
-      () => RegisterViewNavigator());
-  serviceLocator
-      .registerLazySingleton<LoginViewNavigator>(() => LoginViewNavigator());
+    () => RegisterViewNavigator(),
+  );
+  serviceLocator.registerLazySingleton<LoginViewNavigator>(
+    () => LoginViewNavigator(),
+  );
 
   serviceLocator.registerLazySingleton<LoginCubit>(
-      () => LoginCubit(loginViewNavigator: serviceLocator()));
+    () => LoginCubit(
+      loginViewNavigator: serviceLocator<LoginViewNavigator>(),
+    ),
+  );
 }

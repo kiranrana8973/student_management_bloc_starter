@@ -5,9 +5,11 @@ import 'package:student_management_bloc_starter/features/splash/presentation/vie
 class SplashViewNavigator with LoginViewRoute {}
 
 mixin SplashNavigator {
-  openLoginView() {
+  openSplashView() {
     NavigateRoute.popAndPushRoute(
       SplashView(),
     );
   }
 }
+
+

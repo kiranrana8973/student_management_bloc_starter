@@ -5,8 +5,10 @@ class RegisterViewNavigator {}
 
 mixin RegisterViewRoute {
   openRegisterView() {
-    NavigateRoute.popAndPushRoute(
+    NavigateRoute.pushRoute(
       RegisterView(),
     );
   }
 }
+
+  

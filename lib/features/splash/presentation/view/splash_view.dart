@@ -11,24 +11,10 @@ class SplashView extends StatefulWidget {
 
 class _SplashViewState extends State<SplashView> {
   @override
-  void initState() async {
+  void initState() {
     super.initState();
-
-    Future.delayed(const Duration(seconds: 2));
-
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      context.read<SplashCubit>().navigateToLogin();
-    });
+    context.read<SplashCubit>().navigateToLogin();
   }
-
-  // @override
-  // void didChangeDependencies() {
-  //   WidgetsBinding.instance.addPostFrameCallback((_) {
-  //     Future.delayed(const Duration(seconds: 2));
-  //     context.read<SplashCubit>().navigateToLogin();
-  //   });
-  //   super.didChangeDependencies();
-  // }
 
   @override
   Widget build(BuildContext context) {
